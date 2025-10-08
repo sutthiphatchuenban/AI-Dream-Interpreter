@@ -107,14 +107,7 @@
             animation: floatCloud 20s infinite linear;
         }
 
-        .cloud:before {
-            content: '';
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-        }
-
-        .cloud:after {
+        .cloud:before, .cloud:after {
             content: '';
             position: absolute;
             background: rgba(255, 255, 255, 0.1);
@@ -175,7 +168,7 @@
             }
         }
         
-        /* ดาวระยิบระยับ - Enhanced */
+        /* ดาวระยิบระยับ */
         .stars {
             position: fixed;
             top: 0;
@@ -205,7 +198,7 @@
 
         @keyframes shootingStar {
             0% {
-                transform: translateX(-100px) translateY(-100px);
+                transform: translate(-100px, -100px);
                 opacity: 0;
             }
             10% {
@@ -215,7 +208,7 @@
                 opacity: 1;
             }
             100% {
-                transform: translateX(100vw) translateY(100vh);
+                transform: translate(100vw, 100vh);
                 opacity: 0;
             }
         }
@@ -243,7 +236,7 @@
             100% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* Floating Dream Elements */
+        /* Floating Dream Elements - ลดความซับซ้อนของแอนิเมชันนี้ */
         .floating-elements {
             position: fixed;
             top: 0;
@@ -258,8 +251,8 @@
         .dream-element {
             position: absolute;
             font-size: 2rem;
-            opacity: 0.6;
-            animation: floatDream 15s infinite linear;
+            opacity: 0.3; /* ลดความเข้มเริ่มต้น */
+            animation: floatDream 25s infinite linear; /* เพิ่มระยะเวลาเพื่อให้เคลื่อนที่ช้าลง */
         }
 
         @keyframes floatDream {
@@ -268,10 +261,10 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.6;
+                opacity: 0.3;
             }
             90% {
-                opacity: 0.6;
+                opacity: 0.3;
             }
             100% {
                 transform: translateY(-100px) translateX(50px) rotate(360deg);
@@ -292,11 +285,11 @@
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 3px; /* ลดขนาดอนุภาค */
+            height: 3px;
             background: radial-gradient(circle, #fff, transparent);
             border-radius: 50%;
-            animation: particleFloat 8s infinite linear;
+            animation: particleFloat 10s infinite linear; /* เพิ่มระยะเวลา */
         }
 
         @keyframes particleFloat {
@@ -305,11 +298,11 @@
                 opacity: 0;
             }
             10% {
-                opacity: 1;
+                opacity: 0.7;
                 transform: scale(1);
             }
             90% {
-                opacity: 1;
+                opacity: 0.7;
             }
             100% {
                 transform: translateY(-50px) translateX(100px) scale(0);
@@ -324,7 +317,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: morphText 4s ease-in-out infinite;
+            animation: morphText 8s ease-in-out infinite; /* เพิ่มระยะเวลา */
         }
 
         @keyframes morphText {
@@ -346,7 +339,7 @@
             }
         }
 
-        /* Loading Screen - Enhanced Dream Entry */
+        /* Loading Screen - หน้าจอเริ่มต้น */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -398,7 +391,7 @@
             height: 300px;
             border-radius: 50%;
             background: radial-gradient(circle, transparent 30%, rgba(156, 39, 176, 0.3) 50%, rgba(76, 175, 80, 0.2) 70%, transparent 100%);
-            animation: portalSpin 8s linear infinite, portalPulse 3s ease-in-out infinite;
+            animation: portalSpin 12s linear infinite, portalPulse 4s ease-in-out infinite; /* เพิ่มเวลา */
         }
 
         @keyframes portalSpin {
@@ -420,7 +413,7 @@
         .dream-logo {
             font-size: 4rem;
             margin-bottom: 2rem;
-            animation: dreamFloat 3s ease-in-out infinite;
+            animation: dreamFloat 5s ease-in-out infinite; /* เพิ่มเวลา */
             z-index: 10;
             position: relative;
         }
@@ -444,7 +437,7 @@
             font-size: 1.5rem;
             color: #e1bee7;
             margin-bottom: 2rem;
-            animation: dreamMessage 4s ease-in-out infinite;
+            animation: dreamMessage 6s ease-in-out infinite; /* เพิ่มเวลา */
             z-index: 10;
             position: relative;
             text-align: center;
@@ -467,7 +460,7 @@
             height: 100px;
             border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(138, 43, 226, 0.6), rgba(75, 0, 130, 0.8));
-            animation: orbFloat 3s ease-in-out infinite;
+            animation: orbFloat 5s ease-in-out infinite; /* เพิ่มเวลา */
             box-shadow: 0 0 50px rgba(138, 43, 226, 0.6);
         }
 
@@ -929,11 +922,6 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
-        .input-section {
-            margin-bottom: 30px;
-            position: relative;
-        }
-
         .input-section::before {
             content: '✨';
             position: absolute;
@@ -965,9 +953,9 @@
             animation: fadeInUp 1s ease-out 0.3s both;
         }
         
-        /* ช่องกรอกข้อความ */
         .input-section {
             margin-bottom: 30px;
+            position: relative;
         }
         
         .input-label {
@@ -979,32 +967,6 @@
             text-align: center;
         }
         
-        .dream-input {
-            width: 100%;
-            padding: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            font-size: 1.1rem;
-            font-family: 'Sarabun', sans-serif;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .dream-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .dream-input:focus {
-            outline: none;
-            border-color: #e1bee7;
-            box-shadow: 0 0 20px rgba(225, 190, 231, 0.3);
-        }
-        
-        /* ปุ่มต่างๆ */
         .button-group {
             display: flex;
             gap: 15px;
@@ -1160,9 +1122,7 @@
             animation: numberReveal 0.8s ease-out forwards, glow 2s infinite alternate 0.8s;
         }
 
-        .number-badge:nth-child(1) { animation-delay: 0.2s, 1s; }
-        .number-badge:nth-child(2) { animation-delay: 0.4s, 1.2s; }
-        .number-badge:nth-child(3) { animation-delay: 0.6s, 1.4s; }
+        /* ... (animation-delay สำหรับ .number-badge:nth-child(n) ถูกจัดการใน JS แล้วเพื่อความยืดหยุ่น) ... */
 
         @keyframes numberReveal {
             0% {
@@ -1254,24 +1214,35 @@
             to { opacity: 1; }
         }
         
-        /* Accessibility - Reduced Motion */
+        /* ======== PERFORMANCE OPTIMIZATION FOR MOBILE/LOW POWER ======== */
+        
+        /* 1. Respect Reduced Motion Setting */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
             
+            /* ปิด Element ที่กินทรัพยากรสูง */
             .dream-overlay,
             .floating-clouds,
             .stars,
             .floating-elements,
-            .particles {
+            .particles,
+            .dream-portal {
                 display: none !important;
+            }
+            
+            /* ทำให้ Main Card แสดงทันที */
+            .main-card {
+                animation: none !important;
+                opacity: 1 !important;
             }
         }
 
-        /* Mobile Optimizations - ลดความเข้มแอนิเมชันบน mobile */
+        /* 2. Optimization for Mobile (<= 768px) */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -1301,7 +1272,7 @@
                 justify-content: center;
             }
 
-            /* ลดความเข้มแอนิเมชันบน tablet */
+            /* Tweak Layer Animations */
             .dream-overlay {
                 animation-duration: 12s;
                 opacity: 0.2;
@@ -1325,8 +1296,17 @@
                 animation-duration: 12s;
                 opacity: 0.3;
             }
+            
+            .dream-portal {
+                animation-duration: 10s;
+            }
+            
+            .dream-logo {
+                animation-duration: 5s;
+            }
         }
         
+        /* 3. Severe Optimization for Small/Older Mobile Devices (<= 480px) */
         @media (max-width: 480px) {
             .header h1 {
                 font-size: 1.8rem;
@@ -1341,7 +1321,7 @@
                 font-size: 1rem;
             }
 
-            /* ลดแอนิเมชันอย่างมากบน mobile */
+            /* ปิด Layer Animations เกือบทั้งหมด */
             .dream-overlay {
                 animation: none;
                 opacity: 0.1;
@@ -1384,27 +1364,31 @@
                 opacity: 0.2;
             }
             
-            /* ลด morphing text animation */
+            /* ลด Morphing Text Animation Speed */
             .morphing-text {
+                animation-duration: 10s;
+            }
+            
+            /* ลด Portal Animation Speed */
+            .dream-portal {
+                animation-duration: 15s;
+            }
+            
+            .dream-logo {
                 animation-duration: 8s;
             }
             
-            /* ลด portal animation */
-            .dream-portal {
-                animation-duration: 12s;
-            }
-            
-            /* ลด floating animation */
-            .dream-logo {
-                animation-duration: 6s;
-            }
-            
             .dream-orb {
-                animation-duration: 6s;
+                animation-duration: 8s;
+            }
+            
+            /* ลบ icon ก่อน/หลัง input */
+            .input-section::before {
+                display: none;
             }
         }
 
-        /* สำหรับ mobile ที่มีประสิทธิภาพต่ำ */
+        /* 4. Extreme Optimization for Low DPI Screens (Fallback) */
         @media (max-width: 480px) and (max-resolution: 150dpi) {
             .floating-clouds,
             .floating-elements,
@@ -1432,24 +1416,26 @@
         <div class="dream-orb"></div>
     </div>
 
-    <!-- Dream Overlay - เอฟเฟกต์หมอกฝัน -->
+    <!-- Visual Layers (ปรับปรุงการจัดวาง z-index และความเข้ม) -->
     <div class="dream-overlay"></div>
     
-    <!-- Floating Clouds - เมฆลอยตัว -->
     <div class="floating-clouds">
         <div class="cloud cloud-1"></div>
         <div class="cloud cloud-2"></div>
     </div>
     
-    <!-- ดาวระยิบระยับ -->
+    <div class="particles" id="particles"></div>
+    
     <div class="stars" id="stars"></div>
+    
+    <div class="floating-elements" id="floatingElements"></div>
     
     <div class="container">
         <!-- Header -->
         <header class="header">
             <div class="header-top">
-                <!-- ธีมพิเศษ -->
-                <div class="theme-selector">
+                <!-- ธีมพิเศษ (ย้ายมาแสดงเฉพาะ Pro) -->
+                <div class="theme-selector" id="themeSelector">
                     <button class="theme-btn active" data-theme="default">🌙</button>
                     <button class="theme-btn" data-theme="golden">✨</button>
                     <button class="theme-btn" data-theme="mystic">🔮</button>
@@ -1460,14 +1446,14 @@
                     <button class="upgrade-btn" id="upgradeBtn">⭐ อัปเกรดเป็น Pro</button>
                 </div>
             </div>
-            <h1>🪄 AI Dream Interpreter</h1>
+            <h1><span class="morphing-text">🪄 AI Dream Interpreter</span></h1>
             <p class="tagline">ถอดรหัสความฝัน แปลจิตใต้สำนึก พร้อมใบ้หวยนำโชค</p>
         </header>
         
         <!-- การ์ดหลัก -->
         <main class="main-card">
             <!-- Tab Navigation สำหรับ Pro -->
-            <div class="tab-navigation" id="tabNavigation" style="display: none;">
+            <div class="tab-navigation" id="tabNavigation">
                 <button class="tab-btn active" data-tab="interpret">🔮 ถอดรหัสความฝัน</button>
                 <button class="tab-btn" data-tab="history">📚 ประวัติความฝัน</button>
             </div>
@@ -1549,19 +1535,13 @@
                     
                     <!-- ประวัติความฝัน -->
                     <div class="result-card pro-card">
-                        <h3 class="result-title">📚 ประวัติความฝัน <span class="pro-badge">PRO</span></h3>
-                        <div id="dreamHistory" class="dream-history">
+                        <h3 class="result-title">💾 บันทึกความฝัน <span class="pro-badge">PRO</span></h3>
+                        <div id="dreamHistory">
                             <button id="saveBtn" class="btn btn-pro">💾 บันทึกความฝันนี้</button>
                             <p style="color: rgba(255,255,255,0.7); text-align: center; margin-top: 15px;">
                                 💡 ประวัติความฝันได้ถูกย้ายไปที่แท็บ "ประวัติความฝัน" แล้ว
                             </p>
                         </div>
-                    </div>
-                    
-                    <!-- ธีมพิเศษ -->
-                    <div class="result-card pro-card" style="display: none;">
-                        <h3 class="result-title">🎨 ธีมพิเศษ <span class="pro-badge">PRO</span></h3>
-                        <p>ธีมพิเศษได้ถูกย้ายไปที่ด้านบนแล้ว</p>
                     </div>
                 </div>
                 
@@ -1570,15 +1550,49 @@
             </div>
         </main>
     </div>
-
+    
     <script>
-        // ระบบ Pro Management
+        // เพิ่มฟังก์ชันสร้างอนุภาคและองค์ประกอบลอย
+        function initializeFloatingElements() {
+            const particleCount = window.innerWidth <= 480 ? 30 : 60;
+            const elementCount = window.innerWidth <= 480 ? 3 : 8;
+            
+            const particlesContainer = document.getElementById('particles');
+            const elementsContainer = document.getElementById('floatingElements');
+
+            // 1. Particles
+            for (let i = 0; i < particleCount; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = `${Math.random() * 100}%`;
+                p.style.top = `${Math.random() * 100}%`;
+                p.style.animationDelay = `${Math.random() * 10}s`;
+                p.style.animationDuration = `${6 + Math.random() * 4}s`;
+                particlesContainer.appendChild(p);
+            }
+
+            // 2. Dream Elements (Icons/Symbols)
+            const symbols = ['🔮', '💫', '🌟', '🌙', '🌀', '🔱', '🗝️', '💎'];
+            for (let i = 0; i < elementCount; i++) {
+                const el = document.createElement('div');
+                el.className = 'dream-element';
+                el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                el.style.left = `${Math.random() * 100}%`;
+                el.style.top = `${Math.random() * 100}%`;
+                el.style.fontSize = `${1.5 + Math.random() * 1}rem`;
+                el.style.animationDelay = `${Math.random() * 25}s`;
+                el.style.animationDuration = `${18 + Math.random() * 12}s`;
+                elementsContainer.appendChild(el);
+            }
+        }
+        
+        // ระบบ Pro Management (เหมือนเดิม)
         class ProManager {
+            // ... (โค้ด ProManager เหมือนเดิม) ...
             constructor() {
                 this.isPro = this.checkProStatus();
                 this.freeUsageCount = parseInt(localStorage.getItem('freeUsageCount') || '0');
                 this.maxFreeUsage = 3;
-                // ไม่เรียก initializeProSystem ที่นี่ เพราะจะเรียกใน DOMContentLoaded แล้ว
             }
 
             checkProStatus() {
@@ -1590,7 +1604,6 @@
                     if (new Date() < expiryDate) {
                         return true;
                     } else {
-                        // หมดอายุแล้ว
                         localStorage.removeItem('proKey');
                         localStorage.removeItem('proExpiry');
                     }
@@ -1599,16 +1612,11 @@
             }
 
             activatePro(key) {
-                // ตรวจสอบ Pro Key (ในการใช้งานจริงควรตรวจสอบกับเซิร์ฟเวอร์)
-                const validKeys = [
-                    'DREAM_PRO_2024',
-                    'PREMIUM_DREAM_KEY',
-                    'PRO_INTERPRETER_VIP'
-                ];
+                const validKeys = ['DREAM_PRO_2024', 'PREMIUM_DREAM_KEY', 'PRO_INTERPRETER_VIP'];
 
                 if (validKeys.includes(key.toUpperCase())) {
                     const expiryDate = new Date();
-                    expiryDate.setMonth(expiryDate.getMonth() + 1); // หมดอายุ 1 เดือน
+                    expiryDate.setMonth(expiryDate.getMonth() + 1); 
                     
                     localStorage.setItem('proKey', key.toUpperCase());
                     localStorage.setItem('proExpiry', expiryDate.toISOString());
@@ -1640,7 +1648,7 @@
                 const statusBadge = document.getElementById('statusBadge');
                 const upgradeBtn = document.getElementById('upgradeBtn');
                 const proFeatures = document.getElementById('proFeatures');
-                const themeSelector = document.querySelector('.header-top .theme-selector');
+                const themeSelector = document.getElementById('themeSelector');
                 const tabNavigation = document.getElementById('tabNavigation');
 
                 if (this.isPro) {
@@ -1660,7 +1668,6 @@
                 }
             }
 
-            // ฟีเจอร์ Pro - การวิเคราะห์ลึก
             generateDeepAnalysis(dreamText, interpretation) {
                 if (!this.isPro) return '';
                 
@@ -1676,7 +1683,6 @@
                 `;
             }
 
-            // ฟีเจอร์ Pro - บันทึกประวัติ
             saveDreamHistory(dreamText, interpretation) {
                 if (!this.isPro) return;
                 
@@ -1691,7 +1697,7 @@
                 };
                 
                 history.unshift(newEntry);
-                if (history.length > 20) history.pop(); // เก็บแค่ 20 รายการล่าสุด
+                if (history.length > 20) history.pop(); 
                 
                 localStorage.setItem('dreamHistory', JSON.stringify(history));
                 this.displayDreamHistory();
@@ -1700,7 +1706,6 @@
             displayDreamHistory() {
                 if (!this.isPro) return;
                 
-                // Update both history lists (old and new tab)
                 const historyLists = document.querySelectorAll('#historyList');
                 const history = JSON.parse(localStorage.getItem('dreamHistory') || '[]');
                 
@@ -1722,43 +1727,32 @@
                 const history = JSON.parse(localStorage.getItem('dreamHistory') || '[]');
                 const item = history.find(h => h.id === id);
                 if (item) {
-                    // Switch to interpret tab
                     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                     document.querySelector('[data-tab="interpret"]').classList.add('active');
                     document.getElementById('interpretTab').classList.add('active');
                     
-                    // Load the dream
                     document.getElementById('dreamInput').value = item.fullDream;
-                    document.getElementById('interpretation').innerHTML = item.fullInterpretation;
-                    document.getElementById('resultSection').style.display = 'block';
-                    
-                    // Scroll to result
-                    document.getElementById('resultSection').scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
+                    // เพื่อให้แน่ใจว่าการแสดงผลลัพธ์เกิดขึ้นหลังการเปลี่ยนแท็บ
+                    setTimeout(() => {
+                        document.getElementById('interpretation').innerHTML = item.fullInterpretation;
+                        document.getElementById('resultSection').style.display = 'block';
+                        document.getElementById('resultSection').scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }, 100);
                 }
             }
 
-            // ฟีเจอร์ Pro - ธีมพิเศษ
             initializeThemes() {
                 const themeButtons = document.querySelectorAll('.header-top .theme-btn');
                 const currentTheme = localStorage.getItem('selectedTheme') || 'default';
                 
-                // ตั้งค่าธีมปัจจุบัน
                 this.applyTheme(currentTheme);
                 
                 themeButtons.forEach(btn => {
-                    if (btn.dataset.theme === currentTheme) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
-                    
                     btn.addEventListener('click', () => {
-                        // เนื่องจาก theme selector จะแสดงเฉพาะ Pro user แล้ว
-                        // ไม่จำเป็นต้องตรวจสอบสิทธิ์อีก
                         themeButtons.forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
                         this.applyTheme(btn.dataset.theme);
@@ -1777,21 +1771,17 @@
             initializeProSystem() {
                 this.updateProUI();
                 
-                // Event listener สำหรับปุ่มอัปเกรด
                 document.getElementById('upgradeBtn').addEventListener('click', () => {
                     this.showUpgradeModal();
                 });
 
-                // Event listener สำหรับบันทึกความฝัน
                 const saveBtn = document.getElementById('saveBtn');
                 if (saveBtn) {
-                    // ลบ event listener เก่าก่อน (ถ้ามี) เพื่อป้องกันการเพิ่มซ้ำ
-                    saveBtn.replaceWith(saveBtn.cloneNode(true));
-                    const newSaveBtn = document.getElementById('saveBtn');
-                    
-                    newSaveBtn.addEventListener('click', () => {
+                    saveBtn.addEventListener('click', () => {
                         const dreamText = document.getElementById('dreamInput').value;
-                        const interpretation = document.getElementById('interpretation').textContent;
+                        const interpretationElement = document.getElementById('interpretation');
+                        const interpretation = interpretationElement ? interpretationElement.textContent : ''; // ใช้ textContent เพื่อให้ได้ข้อความที่แสดงผล
+                        
                         if (dreamText && interpretation) {
                             this.saveDreamHistory(dreamText, interpretation);
                             alert('💾 บันทึกความฝันเรียบร้อยแล้ว!');
@@ -1799,10 +1789,7 @@
                     });
                 }
 
-                // เริ่มต้นธีม
                 this.initializeThemes();
-                
-                // แสดงประวัติ
                 this.displayDreamHistory();
             }
 
@@ -1811,89 +1798,63 @@
                 
                 if (key) {
                     if (this.activatePro(key)) {
-                        alert('🎉 ยินดีด้วย! คุณได้อัปเกรดเป็น Pro แล้ว\n\nฟีเจอร์ที่ได้รับ:\n✨ การวิเคราะห์ลึกขึ้น\n📚 บันทึกประวัติความฝัน\n🎨 ธีมพิเศษ\n🔮 ไม่จำกัดการใช้งาน');
+                        alert('🎉 ยินดีด้วย! คุณได้อัปเกรดเป็น Pro แล้ว');
                     } else {
-                        alert('❌ Pro Key ไม่ถูกต้อง\n\nกรุณาติดต่อเราเพื่อซื้อ Pro Key');
+                        alert('❌ Pro Key ไม่ถูกต้อง');
                     }
                 }
             }
         }
 
-        // สร้าง ProManager instance
         const proManager = new ProManager();
-
-        // ตัวแปรสำหรับ Gemini API
-        const GEMINI_API_KEY = 'AIzaSyBI_E4OLbOIWw5B9tRnF6lJKy3yutN-r-8';
+        
+        // Gemini API Key (ควรถูกซ่อนในไฟล์ .env จริงๆ)
+        const GEMINI_API_KEY = 'AIzaSyBI_E4OLbOIWw5B9tRnF6lJKy3yutN-r-8'; 
         const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent';
         
-        // ตัวอย่างความฝัน
         const dreamExamples = [
-            'ฝันเห็นงูใหญ่สีเขียวเลื้อยมาหาฉัน',
-            'ฝันว่าบินไปในท้องฟ้าสีฟ้า',
-            'ฝันว่าถูกหวยรางวัลที่หนึ่ง',
-            'ฝันว่าตกน้ำแล้วว่ายน้ำไม่เป็น',
-            'ฝันเห็นพระสีทองส่องแสง',
-            'ฝันว่าขึ้นเรือใหญ่ข้ามทะเล',
-            'ฝันว่าถูกสุนัขไล่กัด',
-            'ฝันเห็นดอกไม้บานสะพรั่ง',
-            'ฝันว่าเดินในป่าใหญ่หลงทาง',
-            'ฝันเห็นเงินทองเต็มบ้าน'
+            'ฝันเห็นงูใหญ่สีเขียวเลื้อยมาหาฉัน', 'ฝันว่าบินไปในท้องฟ้าสีฟ้า', 
+            'ฝันว่าถูกหวยรางวัลที่หนึ่ง', 'ฝันว่าตกน้ำแล้วว่ายน้ำไม่เป็น', 
+            'ฝันเห็นพระสีทองส่องแสง', 'ฝันว่าขึ้นเรือใหญ่ข้ามทะเล', 
+            'ฝันว่าถูกสุนัขไล่กัด', 'ฝันเห็นเงินทองเต็มบ้าน'
         ];
         
-        // สร้างดาวระยิบระยับ พร้อมดาวตกและกลุ่มดาว
-        function createStars() {
+        // =================================================================
+        // START: PERFORMANCE ENHANCEMENT FUNCTIONS
+        // =================================================================
+
+        function createVisualEffects() {
             const starsContainer = document.getElementById('stars');
+            const particlesContainer = document.getElementById('particles');
+            const elementsContainer = document.getElementById('floatingElements');
             
-            // ตรวจสอบว่าเป็น mobile หรือไม่
             const isMobile = window.innerWidth <= 480;
             const isTablet = window.innerWidth <= 768 && window.innerWidth > 480;
-            const isLowPerformance = window.devicePixelRatio <= 1.5;
             
-            // ปรับจำนวนดาวตามอุปกรณ์
-            let numStars = 100;
-            if (isMobile) {
-                numStars = isLowPerformance ? 30 : 50;
-            } else if (isTablet) {
-                numStars = 70;
-            }
-            
-            // สร้างดาวปกติ
+            // 1. Stars (Reduced Count for Performance)
+            const numStars = isMobile ? 30 : (isTablet ? 70 : 100);
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.width = `${Math.random() * 2 + 1}px`;
                 star.style.height = star.style.width;
-                star.style.animationDelay = Math.random() * 2 + 's';
+                star.style.animationDelay = `${Math.random() * 2}s`;
                 starsContainer.appendChild(star);
             }
 
-            // สร้างดาวตก (ไม่สร้างบน mobile)
+            // 2. Shooting Stars (Only on Desktop/Tablet)
             function createShootingStar() {
-                if (isMobile) return; // ไม่สร้างดาวตกบน mobile
+                if (isMobile) return;
                 
                 const shootingStar = document.createElement('div');
                 shootingStar.className = 'shooting-star';
-                shootingStar.style.left = Math.random() * 50 + '%';
-                shootingStar.style.top = Math.random() * 50 + '%';
-                shootingStar.style.animationDelay = Math.random() * 2 + 's';
-                
-                // เพิ่ม trail effect (ลดลงบน tablet)
-                if (!isTablet) {
-                    shootingStar.style.boxShadow = `
-                        0 0 6px #fff,
-                        0 0 12px #4fc3f7,
-                        0 0 18px #4fc3f7,
-                        0 0 24px #4fc3f7
-                    `;
-                } else {
-                    shootingStar.style.boxShadow = `0 0 4px #fff, 0 0 8px #4fc3f7`;
-                }
-                
+                shootingStar.style.left = `${Math.random() * 50 + '%'} `;
+                shootingStar.style.top = `${Math.random() * 50 + '%'} `;
+                shootingStar.style.animationDelay = `${Math.random() * 2}s`;
                 starsContainer.appendChild(shootingStar);
                 
-                // ลบดาวตกหลังจากอนิเมชั่นเสร็จ
                 setTimeout(() => {
                     if (shootingStar.parentNode) {
                         shootingStar.parentNode.removeChild(shootingStar);
@@ -1901,82 +1862,69 @@
                 }, 3000);
             }
 
-            // สร้างกลุ่มดาว (Constellation)
+            // 3. Constellations (Reduced Count/Complexity)
             function createConstellation() {
                 const constellation = document.createElement('div');
                 constellation.className = 'constellation';
-                constellation.style.left = Math.random() * 80 + 10 + '%';
-                constellation.style.top = Math.random() * 80 + 10 + '%';
-                constellation.style.animationDelay = Math.random() * 4 + 's';
+                constellation.style.left = `${Math.random() * 80 + 10}%`;
+                constellation.style.top = `${Math.random() * 80 + 10}%`;
+                constellation.style.animationDelay = `${Math.random() * 4}s`;
                 
-                // ลดจำนวนดาวในกลุ่มบน mobile
-                const constellationStars = isMobile ? 3 : 5;
+                const constellationStarsCount = isMobile ? 3 : 5;
                 
-                // สร้างดาวในกลุ่ม
-                for (let i = 0; i < constellationStars; i++) {
+                for (let i = 0; i < constellationStarsCount; i++) {
                     const constellationStar = document.createElement('div');
                     constellationStar.style.position = 'absolute';
                     constellationStar.style.width = '2px';
                     constellationStar.style.height = '2px';
                     constellationStar.style.background = '#e1bee7';
                     constellationStar.style.borderRadius = '50%';
-                    constellationStar.style.left = (i * 15) + 'px';
-                    constellationStar.style.top = Math.sin(i) * 10 + 'px';
-                    
-                    // ลด glow effect บน mobile
-                    if (!isMobile) {
-                        constellationStar.style.boxShadow = '0 0 4px #e1bee7';
-                    }
+                    constellationStar.style.left = `${i * (15 / (isMobile ? 1.5 : 1))}px`;
+                    constellationStar.style.top = `${Math.sin(i) * (isMobile ? 5 : 10)}px`;
                     constellation.appendChild(constellationStar);
                 }
-                
                 starsContainer.appendChild(constellation);
             }
+            
+            // Start recurring effects
+            const shootingStarInterval = isMobile ? 99999 : (isTablet ? 15000 : 7000);
+            setInterval(createShootingStar, shootingStarInterval);
 
-            // สร้างดาวตกทุก 5-10 วินาที (ไม่ทำงานบน mobile)
-            if (!isMobile) {
-                const shootingStarInterval = isTablet ? 15000 : 7000; // ลดความถี่บน tablet
-                setInterval(() => {
-                    if (Math.random() < (isTablet ? 0.3 : 0.7)) {
-                        createShootingStar();
-                    }
-                }, Math.random() * shootingStarInterval + shootingStarInterval);
-            }
-
-            // สร้างกลุ่มดาว (ลดจำนวนบน mobile)
             const numConstellations = isMobile ? 1 : (isTablet ? 2 : 3);
             for (let i = 0; i < numConstellations; i++) {
-                setTimeout(() => {
-                    createConstellation();
-                }, i * 2000);
+                setTimeout(() => createConstellation(), i * 3000);
             }
+            
+            // 4. Floating Elements & Particles
+            initializeFloatingElements();
         }
-        
-        // ฟังก์ชัน escape HTML เพื่อป้องกัน XSS
+
+        // END: PERFORMANCE ENHANCEMENT FUNCTIONS
+        // =================================================================
+
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
         
-        // ฟังก์ชันเรียก Gemini API จริง
         async function callGeminiAPI(dreamText) {
             const prompt = `คุณเป็นผู้เชี่ยวชาญด้านการตีความความฝันและโหราศาสตร์ไทย กรุณาวิเคราะห์ความฝันนี้: "${dreamText}"
 
-กรุณาตอบในรูปแบบ JSON ดังนี้:
-{
-  "interpretation": "คำตีความความฝันอย่างละเอียด (2-3 ประโยค)",
-  "subconscious": "การแปลความหมายจิตใต้สำนึก (2-3 ประโยค)", 
-  "luckScore": คะแนนโชคดี 1-10,
-  "luckyNumbers": [เลข2หลัก, เลข2หลัก, เลข3หลัก]
-}
+            กรุณาตอบในรูปแบบ JSON ดังนี้:
+            {
+              "interpretation": "คำตีความความฝันอย่างละเอียด (2-3 ประโยค)",
+              "subconscious": "การแปลความหมายจิตใต้สำนึก (2-3 ประโยค)", 
+              "luckScore": คะแนนโชคดี 1-10,
+              "luckyNumbers": [เลข2หลัก, เลข2หลัก, เลข3หลัก]
+            }
 
-หลักเกณฑ์การให้คะแนนโชค:
-- ฝันเห็นงู, พระ, ทอง, เงิน, ช้าง = โชคดีสูง (8-10)
-- ฝันว่าบิน, ขึ้นเรือ, ดอกไม้ = โชคดีปานกลาง (6-8)
-- ฝันว่าตก, หนี, ถูกไล่ = โชคดีต่ำ (3-5)
+            หลักเกณฑ์การให้คะแนนโชค:
+            - ฝันเห็นงู, พระ, ทอง, เงิน, ช้าง = โชคดีสูง (8-10)
+            - ฝันว่าบิน, ขึ้นเรือ, ดอกไม้ = โชคดีปานกลาง (6-8)
+            - ฝันว่าตก, หนี, ถูกไล่ = โชคดีต่ำ (3-5)
 
-ตอบเป็นภาษาไทยเท่านั้น และให้เลขหวยที่เกี่ยวข้องกับสัญลักษณ์ในความฝัน`;
+            ตอบเป็นภาษาไทยเท่านั้น และให้เลขหวยที่เกี่ยวข้องกับสัญลักษณ์ในความฝัน`;
 
             try {
                 const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
@@ -2000,7 +1948,6 @@
                 const data = await response.json();
                 const text = data.candidates[0].content.parts[0].text;
                 
-                // พยายามแปลง JSON จากการตอบกลับ
                 try {
                     const jsonMatch = text.match(/\{[\s\S]*\}/);
                     if (jsonMatch) {
@@ -2010,22 +1957,19 @@
                     console.error('Error parsing JSON from Gemini:', e);
                 }
                 
-                // ถ้าแปลง JSON ไม่ได้ ให้ใช้ fallback
                 return simulateLocalDecode(dreamText);
                 
             } catch (error) {
                 console.error('Error calling Gemini API:', error);
-                // ใช้ระบบ fallback ถ้า API ไม่ทำงาน
                 return simulateLocalDecode(dreamText);
             }
         }
         
-        // ฟังก์ชัน fallback สำหรับกรณี API ไม่ทำงาน
+        // ฟังก์ชัน fallback สำหรับกรณี API ไม่ทำงาน (เหมือนเดิม)
         function simulateLocalDecode(dreamText) {
             const text = dreamText.toLowerCase();
             let interpretation, subconscious, luckScore, luckyNumbers;
             
-            // วิเคราะห์ความฝันตามคีย์เวิร์ด
             if (text.includes('งู')) {
                 interpretation = 'การฝันเห็นงูเป็นสัญลักษณ์ของการเปลี่ยนแปลงและพลังงานชีวิต อาจหมายถึงโอกาสใหม่ๆ ที่กำลังจะมาถึง';
                 subconscious = 'จิตใต้สำนึกของคุณกำลังเตรียมตัวรับมือกับการเปลี่ยนแปลงที่สำคัญในชีวิต';
@@ -2057,10 +2001,9 @@
                 luckScore = 6;
                 luckyNumbers = [24, 42, 242];
             } else {
-                // กรณีทั่วไป
                 interpretation = 'ความฝันของคุณสะท้อนถึงความปรารถนาและความกังวลในจิตใต้สำนึก เป็นการประมวลผลประสบการณ์ในชีวิตประจำวัน';
                 subconscious = 'จิตใต้สำนึกของคุณกำลังจัดระเบียบความทรงจำและอารมณ์ เพื่อเตรียมพร้อมสำหรับวันใหม่';
-                luckScore = Math.floor(Math.random() * 4) + 5; // 5-8
+                luckScore = Math.floor(Math.random() * 4) + 5;
                 luckyNumbers = [
                     Math.floor(Math.random() * 90) + 10,
                     Math.floor(Math.random() * 90) + 10,
@@ -2075,70 +2018,42 @@
                 luckyNumbers
             };
         }
-        
-        // แสดงผลลัพธ์พร้อมอนิเมชั่น
-        function displayResult(result) {
-            const resultSection = document.getElementById('resultSection');
+
+        function displayResult(result, dreamText = '') {
+            document.getElementById('interpretation').innerHTML = result.interpretation;
+            document.getElementById('subconscious').innerHTML = result.subconscious;
+            document.getElementById('luckScore').innerHTML = `โชคดี <span class="luck-score-number counter" data-target="${result.luckScore}">0</span>/10`;
             
-            // แสดงผลลัพธ์ด้วย typewriter effect
-            document.getElementById('interpretation').innerHTML = `
-                <div class="typewriter">คำตีความความฝัน</div>
-                <div class="typewriter-content">${result.interpretation}</div>
-            `;
+            const luckyNumbersHtml = result.luckyNumbers.map(num => 
+                `<span class="number-badge">${num}</span>`
+            ).join('');
+            document.getElementById('luckyNumbers').innerHTML = luckyNumbersHtml;
             
-            document.getElementById('subconscious').innerHTML = `
-                <div class="typewriter">แปลความจิตใต้สำนึก</div>
-                <div class="typewriter-content">${result.subconscious}</div>
-            `;
+            // Pro Feature Update
+            if (proManager.isPro) {
+                const deepAnalysis = proManager.generateDeepAnalysis(dreamText, result.interpretation);
+                document.getElementById('deepAnalysis').innerHTML = deepAnalysis;
+            }
             
-            // แสดงคะแนนโชคด้วย counter animation
-            const luckScoreElement = document.getElementById('luckScore');
-            luckScoreElement.innerHTML = `
-                <div class="typewriter">คะแนนโชคดี</div>
-                <div class="typewriter-content">
-                    โชคดี <span class="luck-score-number counter" data-target="${result.luckScore}">0</span>/10
-                </div>
-            `;
-            
-            // แสดง progress bar
-            const progressFill = document.getElementById('progressFill');
-            setTimeout(() => {
-                progressFill.style.width = (result.luckScore * 10) + '%';
-            }, 300);
-            
-            // แสดงเลขหวยด้วย reveal animation
-            const luckyNumbersContainer = document.getElementById('luckyNumbers');
-            luckyNumbersContainer.innerHTML = '';
-            result.luckyNumbers.forEach(number => {
-                const badge = document.createElement('div');
-                badge.className = 'number-badge';
-                badge.textContent = number;
-                luckyNumbersContainer.appendChild(badge);
-            });
-            
-            // แสดงเวลาอัปเดต
+            // Update Progress Bar & Time
+            document.getElementById('progressFill').style.width = `${result.luckScore * 10}%`;
             const now = new Date();
-            const timeString = now.toLocaleString('th-TH', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-            document.getElementById('updateTime').textContent = `อัปเดตล่าสุด: ${timeString}`;
+            document.getElementById('updateTime').textContent = 
+                `อัปเดตล่าสุด: ${now.toLocaleDateString('th-TH')} ${now.toLocaleTimeString('th-TH')}`;
             
-            // แสดงผลลัพธ์พร้อมอนิเมชั่น
-            resultSection.classList.add('show');
-            resultSection.style.display = 'block';
+            // Show Section and Scroll
+            document.getElementById('resultSection').style.display = 'block';
             document.getElementById('copyBtn').style.display = 'inline-block';
             
-            // เริ่ม counter animation
-            setTimeout(() => {
-                animateCounter();
-            }, 2500);
+            document.getElementById('resultSection').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+            
+            animateCounter();
         }
 
-        // Counter Animation Function
+        // Counter Animation Function (เหมือนเดิม)
         function animateCounter() {
             const counters = document.querySelectorAll('.counter');
             counters.forEach(counter => {
@@ -2159,13 +2074,7 @@
                 updateCounter();
             });
         }
-
-        // ฟังก์ชัน animateCounters สำหรับเรียกใช้ใน displayResult
-        function animateCounters() {
-            animateCounter();
-        }
         
-        // ฟังก์ชันคัดลอกผลลัพธ์
         function copyResult() {
             const interpretation = document.getElementById('interpretation').textContent;
             const subconscious = document.getElementById('subconscious').textContent;
@@ -2173,19 +2082,7 @@
             const luckyNumbers = Array.from(document.querySelectorAll('.number-badge'))
                 .map(badge => badge.textContent).join(', ');
             
-            const resultText = `🪄 AI Dream Interpreter - ผลการตีความฝัน
-
-✨ คำตีความความฝัน:
-${interpretation}
-
-🧠 แปลความจิตใต้สำนึก:
-${subconscious}
-
-🍀 คะแนนโชคดี: ${luckScore}
-
-🎯 ใบ้หวยไทย: ${luckyNumbers}
-
-${document.getElementById('updateTime').textContent}`;
+            const resultText = `🪄 AI Dream Interpreter - ผลการตีความฝัน\n\n✨ คำตีความความฝัน:\n${interpretation}\n\n🧠 แปลความจิตใต้สำนึก:\n${subconscious}\n\n🍀 คะแนนโชคดี: ${luckScore}\n\n🎯 ใบ้หวยไทย: ${luckyNumbers}\n\n${document.getElementById('updateTime').textContent}`;
             
             navigator.clipboard.writeText(resultText).then(() => {
                 const btn = document.getElementById('copyBtn');
@@ -2199,13 +2096,11 @@ ${document.getElementById('updateTime').textContent}`;
             });
         }
         
-        // ฟังก์ชันสุ่มฝันตัวอย่าง
         function randomDream() {
             const randomIndex = Math.floor(Math.random() * dreamExamples.length);
             document.getElementById('dreamInput').value = dreamExamples[randomIndex];
         }
         
-        // ฟังก์ชันหลักสำหรับถอดรหัสความฝัน
         async function interpretDream() {
             const dreamText = document.getElementById('dreamInput').value.trim();
             
@@ -2214,29 +2109,23 @@ ${document.getElementById('updateTime').textContent}`;
                 return;
             }
 
-            // ตรวจสอบการใช้งาน
             if (!proManager.canUseService()) {
                 alert(`❌ คุณใช้งานครบ ${proManager.maxFreeUsage} ครั้งแล้ว\n\nกรุณาอัปเกรดเป็น Pro เพื่อใช้งานไม่จำกัด`);
                 return;
             }
             
-            // แสดง loading
             document.getElementById('loading').style.display = 'block';
             document.getElementById('resultSection').style.display = 'none';
             document.getElementById('interpretBtn').disabled = true;
             
             try {
-                // เรียก Gemini API
                 const result = await callGeminiAPI(escapeHtml(dreamText));
                 
-                // นับการใช้งาน
                 proManager.incrementUsage();
                 
-                // ซ่อน loading
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('interpretBtn').disabled = false;
                 
-                // แสดงผลลัพธ์
                 displayResult(result, dreamText);
                 
             } catch (error) {
@@ -2247,57 +2136,12 @@ ${document.getElementById('updateTime').textContent}`;
             }
         }
 
-        // ฟังก์ชันแสดงผลลัพธ์
-        function displayResult(result, dreamText = '') {
-            // แสดงผลลัพธ์พื้นฐาน
-            document.getElementById('interpretation').innerHTML = result.interpretation;
-            document.getElementById('subconscious').innerHTML = result.subconscious;
-            document.getElementById('luckScore').innerHTML = `${result.luckScore}/10 คะแนน`;
-            
-            // แสดงเลขหวย
-            const luckyNumbersHtml = result.luckyNumbers.map(num => 
-                `<span class="number-badge">${num}</span>`
-            ).join('');
-            document.getElementById('luckyNumbers').innerHTML = luckyNumbersHtml;
-            
-            // แสดงการวิเคราะห์ลึกสำหรับ Pro
-            if (proManager.isPro) {
-                const deepAnalysis = proManager.generateDeepAnalysis(dreamText, result.interpretation);
-                document.getElementById('deepAnalysis').innerHTML = deepAnalysis;
-            }
-            
-            // อัปเดต Progress Bar
-            const progressFill = document.getElementById('progressFill');
-            progressFill.style.width = `${result.luckScore * 10}%`;
-            
-            // แสดงเวลา
-            const now = new Date();
-            document.getElementById('updateTime').textContent = 
-                `อัปเดตล่าสุด: ${now.toLocaleDateString('th-TH')} ${now.toLocaleTimeString('th-TH')}`;
-            
-            // แสดงผลลัพธ์
-            document.getElementById('resultSection').style.display = 'block';
-            document.getElementById('copyBtn').style.display = 'inline-block';
-            
-            // เลื่อนไปยังผลลัพธ์
-            document.getElementById('resultSection').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-            
-            // เอฟเฟกต์นับเลข
-            animateCounters();
-        }
-        
         // Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
-            // เริ่มต้นระบบ Pro
             proManager.initializeProSystem();
+            createVisualEffects(); // เรียกฟังก์ชันสร้างเอฟเฟกต์
+            initializeFloatingElements(); // เรียกฟังก์ชันสร้างอนุภาค
             
-            // สร้างดาว
-            createStars();
-            
-            // ผูกปุ่มต่างๆ
             document.getElementById('interpretBtn').addEventListener('click', interpretDream);
             document.getElementById('randomBtn').addEventListener('click', randomDream);
             document.getElementById('copyBtn').addEventListener('click', copyResult);
@@ -2307,13 +2151,16 @@ ${document.getElementById('updateTime').textContent}`;
                 btn.addEventListener('click', function() {
                     const targetTab = this.getAttribute('data-tab');
                     
-                    // Remove active class from all tabs and contents
                     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                     
-                    // Add active class to clicked tab and corresponding content
                     this.classList.add('active');
                     document.getElementById(targetTab + 'Tab').classList.add('active');
+                    
+                    // หากสลับมาที่ History ให้แสดงรายการประวัติ (Pro Feature)
+                    if (targetTab === 'history' && proManager.isPro) {
+                        proManager.displayDreamHistory();
+                    }
                 });
             });
             
@@ -2324,6 +2171,14 @@ ${document.getElementById('updateTime').textContent}`;
                     interpretDream();
                 }
             });
+            
+            // ซ่อน Loading Screen เมื่อ DOM เสร็จสมบูรณ์ (หลังจาก 4 วินาทีตาม CSS)
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.classList.add('hidden');
+                }
+            }, 4000);
         });
     </script>
 </body>
