@@ -1,0 +1,28 @@
+{
+  "name": "dream-interpreter",
+  "version": "1.0.0",
+  "description": "เว็บแอปพลิเคชันสำหรับถอดรหัสความฝัน - Dream Interpretation Web Application",
+  "main": "dream-interpreter.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "dream",
+    "interpretation",
+    "thai",
+    "web-app",
+    "static-site"
+  ],
+  "author": "Dream Tell",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/dream-interpreter.git"
+  },
+  "homepage": "https://dream-interpreter.vercel.app",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
