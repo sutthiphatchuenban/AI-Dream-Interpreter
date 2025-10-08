@@ -24,158 +24,65 @@
             box-sizing: border-box;
         }
         
+        /* Performance Optimization */
+        * {
+            /* GPU Acceleration for all elements */
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         body {
             font-family: 'Sarabun', sans-serif;
             background: linear-gradient(135deg, #0c0c2e 0%, #1a1a3e 25%, #2d1b69 50%, #4a148c 75%, #6a1b9a 100%);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
+            /* Simplified Entry Animation */
             opacity: 0;
-            animation: dreamEntry 4s ease-out forwards;
+            animation: fadeIn 1.5s ease-out forwards;
+            /* GPU Acceleration */
+            will-change: opacity;
         }
 
-        /* Dream Entry Animation - ล่องลอยเข้าไปในฝัน */
-        @keyframes dreamEntry {
+        /* Simplified Entry Animation */
+        @keyframes fadeIn {
             0% {
                 opacity: 0;
-                transform: scale(1.5) translateY(100px);
-                filter: blur(20px);
-            }
-            25% {
-                opacity: 0.3;
-                transform: scale(1.2) translateY(50px);
-                filter: blur(10px);
-            }
-            50% {
-                opacity: 0.6;
-                transform: scale(1.1) translateY(20px);
-                filter: blur(5px);
-            }
-            75% {
-                opacity: 0.8;
-                transform: scale(1.05) translateY(10px);
-                filter: blur(2px);
+                transform: translateY(20px);
             }
             100% {
                 opacity: 1;
-                transform: scale(1) translateY(0);
-                filter: blur(0);
+                transform: translateY(0);
             }
         }
 
-        /* Dream Overlay - เอฟเฟกต์หมอกฝัน */
+        /* Simplified Dream Overlay */
         .dream-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, rgba(76, 175, 80, 0.1) 50%, rgba(156, 39, 176, 0.2) 100%);
+            background: radial-gradient(circle at center, transparent 0%, rgba(76, 175, 80, 0.05) 50%, rgba(156, 39, 176, 0.1) 100%);
             pointer-events: none;
             z-index: 0;
-            animation: dreamMist 8s ease-in-out infinite;
+            /* GPU Acceleration */
+            will-change: auto;
         }
 
-        @keyframes dreamMist {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.6;
-                transform: scale(1.1);
-            }
-        }
-
-        /* Floating Clouds - เมฆลอยตัว */
-        .floating-clouds {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .cloud {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            opacity: 0.4;
-            animation: floatCloud 20s infinite linear;
-        }
-
-        .cloud:before {
-            content: '';
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-        }
-
-        .cloud:after {
-            content: '';
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-        }
-
-        .cloud-1 {
-            width: 100px;
-            height: 40px;
-            top: 20%;
-            left: -150px;
-            animation-duration: 25s;
-        }
-
-        .cloud-1:before {
-            width: 50px;
-            height: 50px;
-            top: -25px;
-            left: 10px;
-        }
-
-        .cloud-1:after {
-            width: 60px;
-            height: 40px;
-            top: -15px;
-            right: 10px;
-        }
-
-        .cloud-2 {
-            width: 80px;
-            height: 30px;
-            top: 60%;
-            left: -120px;
-            animation-duration: 30s;
-            animation-delay: -10s;
-        }
-
-        .cloud-2:before {
-            width: 40px;
-            height: 40px;
-            top: -20px;
-            left: 15px;
-        }
-
-        .cloud-2:after {
-            width: 50px;
-            height: 30px;
-            top: -10px;
-            right: 15px;
-        }
-
-        @keyframes floatCloud {
-            0% {
-                transform: translateX(-150px);
-            }
-            100% {
-                transform: translateX(calc(100vw + 150px));
-            }
-        }
+        /* Removed Floating Clouds - Too Performance Heavy */
         
-        /* ดาวระยิบระยับ - Enhanced */
+        /* Simplified Stars */
         .stars {
             position: fixed;
             top: 0;
@@ -184,169 +91,45 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
+            /* GPU Acceleration */
+            will-change: auto;
         }
         
         .star {
             position: absolute;
             background: white;
             border-radius: 50%;
-            animation: twinkle 2s infinite alternate;
+            /* Simplified Animation */
+            animation: twinkleSimple 2s ease-in-out infinite;
         }
 
-        /* Shooting Stars - ดาวตก */
-        .shooting-star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: linear-gradient(45deg, #fff, #4fc3f7);
-            border-radius: 50%;
-            animation: shootingStar 3s linear infinite;
-        }
+        /* Removed Shooting Stars - Too Performance Heavy */
 
-        @keyframes shootingStar {
-            0% {
-                transform: translateX(-100px) translateY(-100px);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(100vw) translateY(100vh);
-                opacity: 0;
-            }
-        }
-
-        /* Constellation Effect - กลุ่มดาว */
-        .constellation {
-            position: absolute;
-            opacity: 0.7;
-            animation: constellationGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes constellationGlow {
-            0%, 100% {
-                opacity: 0.4;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.8;
-                transform: scale(1.1);
-            }
-        }
+        /* Removed Constellation Effect - Too Performance Heavy */
         
-        @keyframes twinkle {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.2); }
+        @keyframes twinkleSimple {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
         }
 
-        /* Floating Dream Elements */
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
+        /* Removed Floating Dream Elements - Too Performance Heavy */
 
-        .dream-element {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.6;
-            animation: floatDream 15s infinite linear;
-        }
+        /* Removed Particle Effects - Too Performance Heavy */
 
-        @keyframes floatDream {
-            0% {
-                transform: translateY(100vh) translateX(-50px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100px) translateX(50px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Particle Effects */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: radial-gradient(circle, #fff, transparent);
-            border-radius: 50%;
-            animation: particleFloat 8s infinite linear;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) translateX(0) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-50px) translateX(100px) scale(0);
-                opacity: 0;
-            }
-        }
-
-        /* Morphing Text Animation */
+        /* Simplified Morphing Text */
         .morphing-text {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
-            background-size: 300% 300%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: morphText 4s ease-in-out infinite;
+            /* GPU Acceleration */
+            will-change: auto;
         }
 
-        @keyframes morphText {
-            0%, 100% {
-                background-position: 0% 50%;
-                transform: scale(1);
-            }
-            25% {
-                background-position: 100% 50%;
-                transform: scale(1.05);
-            }
-            50% {
-                background-position: 50% 100%;
-                transform: scale(1.1);
-            }
-            75% {
-                background-position: 100% 0%;
-                transform: scale(1.05);
-            }
-        }
+        /* Removed morphText animation - Too Performance Heavy */
 
-        /* Loading Screen - Enhanced Dream Entry */
+        /* Simplified Loading Screen */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -359,125 +142,71 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            animation: dreamPortalExit 3s ease-in-out 4s forwards;
+            /* Simplified Exit Animation */
+            animation: fadeOut 2s ease-in-out 2s forwards;
             overflow: hidden;
+            /* GPU Acceleration */
+            will-change: opacity;
         }
 
         .loading-screen.hidden {
             display: none;
         }
 
-        /* Dream Portal Exit Animation */
-        @keyframes dreamPortalExit {
-            0% { 
-                opacity: 1; 
-                transform: scale(1);
-                filter: blur(0px);
-            }
-            30% {
-                transform: scale(1.1);
-                filter: blur(2px);
-            }
-            70% {
-                opacity: 0.7;
-                transform: scale(0.8);
-                filter: blur(5px);
-            }
+        /* Simplified Exit Animation */
+        @keyframes fadeOut {
+            0% { opacity: 1; }
             100% { 
                 opacity: 0; 
                 visibility: hidden;
-                transform: scale(0.3);
-                filter: blur(20px);
             }
         }
 
-        /* Dream Portal Background */
-        .dream-portal {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, transparent 30%, rgba(156, 39, 176, 0.3) 50%, rgba(76, 175, 80, 0.2) 70%, transparent 100%);
-            animation: portalSpin 8s linear infinite, portalPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes portalSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes portalPulse {
-            0%, 100% { 
-                transform: scale(1);
-                opacity: 0.6;
-            }
-            50% { 
-                transform: scale(1.2);
-                opacity: 0.9;
-            }
-        }
+        /* Removed Dream Portal - Too Performance Heavy */
 
         .dream-logo {
             font-size: 4rem;
             margin-bottom: 2rem;
-            animation: dreamFloat 3s ease-in-out infinite;
+            /* Simplified Animation */
+            animation: logoFloat 3s ease-in-out infinite;
             z-index: 10;
             position: relative;
+            /* GPU Acceleration */
+            will-change: transform;
         }
 
-        @keyframes dreamFloat {
-            0%, 100% {
-                transform: translateY(0px) scale(1);
-                filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
-            }
-            33% {
-                transform: translateY(-10px) scale(1.05);
-                filter: drop-shadow(0 0 30px rgba(156, 39, 176, 0.7));
-            }
-            66% {
-                transform: translateY(5px) scale(0.98);
-                filter: drop-shadow(0 0 25px rgba(76, 175, 80, 0.6));
-            }
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .loading-text {
             font-size: 1.5rem;
             color: #e1bee7;
             margin-bottom: 2rem;
-            animation: dreamMessage 4s ease-in-out infinite;
             z-index: 10;
             position: relative;
             text-align: center;
             text-shadow: 0 0 10px rgba(225, 190, 231, 0.5);
         }
 
-        @keyframes dreamMessage {
-            0%, 100% { 
-                opacity: 0.7;
-                transform: translateY(0px);
-            }
-            50% { 
-                opacity: 1;
-                transform: translateY(-5px);
-            }
-        }
+        /* Removed dreamMessage animation - Too Performance Heavy */
 
         .dream-orb {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(138, 43, 226, 0.6), rgba(75, 0, 130, 0.8));
-            animation: orbFloat 3s ease-in-out infinite;
-            box-shadow: 0 0 50px rgba(138, 43, 226, 0.6);
+            /* Simplified Animation */
+            animation: orbSimple 3s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
+            /* GPU Acceleration */
+            will-change: transform;
         }
 
-        @keyframes orbFloat {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
+        @keyframes orbSimple {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
         /* คอนเทนเนอร์หลัก */
@@ -497,8 +226,22 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
-            animation: fadeInDown 1s ease-out;
+            /* Simplified Animation */
+            animation: slideDown 1s ease-out;
             position: relative;
+            /* GPU Acceleration */
+            will-change: transform;
+        }
+
+        @keyframes slideDown {
+            0% { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header-top {
@@ -555,7 +298,15 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            /* Simplified Animation */
             animation: badgePulse 2s ease-in-out infinite;
+            /* GPU Acceleration */
+            will-change: transform;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .status-badge.free {
@@ -804,14 +555,17 @@
             color: #fff;
         }
 
-        /* Tab Navigation Styles */
+        /* Tab Navigation Styles - Simplified */
         .tab-navigation {
             display: flex;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 5px;
             margin-bottom: 20px;
-            backdrop-filter: blur(10px);
+            /* Reduced Blur Effect */
+            backdrop-filter: blur(5px);
+            /* GPU Acceleration */
+            will-change: auto;
         }
 
         .tab-btn {
@@ -877,31 +631,24 @@
             border: 2px solid rgba(138, 43, 226, 0.3);
         }
 
-        /* Floating Icons */
+        /* Simplified Floating Icons */
         .floating-icon {
             position: absolute;
             font-size: 1.5rem;
             opacity: 0.7;
-            animation: floatIcon 6s ease-in-out infinite;
+            /* Simplified Animation */
+            animation: floatSimple 6s ease-in-out infinite;
             pointer-events: none;
+            /* GPU Acceleration */
+            will-change: transform;
         }
 
-        @keyframes floatIcon {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-10px) rotate(5deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(0deg);
-            }
-            75% {
-                transform: translateY(-10px) rotate(-5deg);
-            }
+        @keyframes floatSimple {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        /* Enhanced Input Effects */
+        /* Simplified Input Effects */
         .dream-input {
             width: 100%;
             padding: 20px;
@@ -911,11 +658,14 @@
             color: #fff;
             font-size: 1.1rem;
             font-family: 'Sarabun', sans-serif;
-            backdrop-filter: blur(10px);
+            /* Reduced Blur Effect */
+            backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             resize: vertical;
             min-height: 120px;
             position: relative;
+            /* GPU Acceleration */
+            will-change: auto;
         }
 
         .dream-input::placeholder {
@@ -943,26 +693,25 @@
             animation: sparkle 2s ease-in-out infinite;
         }
 
+        /* Simplified Sparkle Animation */
         @keyframes sparkle {
-            0%, 100% {
-                opacity: 0.5;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         
-        /* การ์ดหลัก - Glassmorphism */
+        /* การ์ดหลัก - Simplified Glassmorphism */
         .main-card {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
+            /* Reduced Blur Effect */
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out 0.3s both;
+            /* Simplified Animation */
+            animation: slideDown 1s ease-out 0.3s both;
+            /* GPU Acceleration */
+            will-change: auto;
         }
         
         /* ช่องกรอกข้อความ */
@@ -988,10 +737,13 @@
             color: #fff;
             font-size: 1.1rem;
             font-family: 'Sarabun', sans-serif;
-            backdrop-filter: blur(10px);
+            /* Reduced Blur Effect */
+            backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             resize: vertical;
             min-height: 120px;
+            /* GPU Acceleration */
+            will-change: auto;
         }
         
         .dream-input::placeholder {
@@ -1254,7 +1006,24 @@
             to { opacity: 1; }
         }
         
-        /* Responsive Design */
+        /* Accessibility - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .dream-overlay,
+            .floating-clouds,
+            .stars,
+            .floating-elements,
+            .particles {
+                display: none !important;
+            }
+        }
+
+        /* Mobile Optimizations - ลดความเข้มแอนิเมชันบน mobile */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -1280,8 +1049,90 @@
                 width: 100%;
             }
             
+            /* Performance optimization for mobile devices */
+            .star {
+                animation: none !important;
+            }
+            
+            .dream-orb {
+                animation: none !important;
+            }
+            
+            .status-badge {
+                animation: none !important;
+            }
+            
+            .floating-icon {
+                animation: none !important;
+            }
+            
+            /* Reduce blur effects on mobile */
+            .main-card,
+            .dream-input,
+            .tab-navigation {
+                backdrop-filter: none !important;
+                background: rgba(255, 255, 255, 0.15) !important;
+            }
+            
+            /* Simplify gradients on mobile */
+            body {
+                background: linear-gradient(135deg, #0c0c2e 0%, #4a148c 100%) !important;
+            }
+        }
+
+        /* Performance optimization for very low-end devices */
+        @media (max-width: 480px) and (max-height: 800px) {
+            /* Remove all animations */
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+            
+            /* Use solid colors instead of gradients */
+            .btn-primary {
+                background: #9c27b0 !important;
+            }
+            
+            .btn-pro {
+                background: #ffd700 !important;
+            }
+            
+            /* Remove shadows */
+            .main-card,
+            .dream-input,
+            .btn {
+                box-shadow: none !important;
+            }
+        }
+
+        /* Tablet Optimizations - ลดความเข้มแอนิเมชันบน tablet */
+        @media (max-width: 768px) and (min-width: 481px) {
             .lucky-numbers {
                 justify-content: center;
+            }
+
+            .dream-overlay {
+                animation-duration: 12s;
+                opacity: 0.2;
+            }
+            
+            .cloud {
+                animation-duration: 35s;
+                opacity: 0.2;
+            }
+            
+            .star {
+                animation-duration: 4s;
+            }
+            
+            .dream-element {
+                animation-duration: 25s;
+                opacity: 0.3;
+            }
+            
+            .particle {
+                animation-duration: 12s;
+                opacity: 0.3;
             }
         }
         
@@ -1297,6 +1148,86 @@
             .dream-input {
                 padding: 15px;
                 font-size: 1rem;
+            }
+
+            /* ลดแอนิเมชันอย่างมากบน mobile */
+            .dream-overlay {
+                animation: none;
+                opacity: 0.1;
+            }
+            
+            .floating-clouds {
+                opacity: 0.1;
+            }
+            
+            .cloud {
+                animation-duration: 60s;
+                opacity: 0.1;
+            }
+            
+            .stars {
+                opacity: 0.3;
+            }
+            
+            .star {
+                animation-duration: 6s;
+                opacity: 0.4;
+            }
+            
+            .shooting-star {
+                display: none; /* ซ่อนดาวตกบน mobile */
+            }
+            
+            .constellation {
+                animation-duration: 8s;
+                opacity: 0.3;
+            }
+            
+            .dream-element {
+                animation-duration: 40s;
+                opacity: 0.2;
+            }
+            
+            .particle {
+                animation-duration: 20s;
+                opacity: 0.2;
+            }
+            
+            /* ลด morphing text animation */
+            .morphing-text {
+                animation-duration: 8s;
+            }
+            
+            /* ลด portal animation */
+            .dream-portal {
+                animation-duration: 12s;
+            }
+            
+            /* ลด floating animation */
+            .dream-logo {
+                animation-duration: 6s;
+            }
+            
+            .dream-orb {
+                animation-duration: 6s;
+            }
+        }
+
+        /* สำหรับ mobile ที่มีประสิทธิภาพต่ำ */
+        @media (max-width: 480px) and (max-resolution: 150dpi) {
+            .floating-clouds,
+            .floating-elements,
+            .particles {
+                display: none !important;
+            }
+            
+            .stars {
+                opacity: 0.2;
+            }
+            
+            .dream-overlay {
+                background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(156, 39, 176, 0.1) 100%);
+                animation: none;
             }
         }
     </style>
@@ -1721,7 +1652,19 @@
         // สร้างดาวระยิบระยับ พร้อมดาวตกและกลุ่มดาว
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const numStars = 100;
+            
+            // ตรวจสอบว่าเป็น mobile หรือไม่
+            const isMobile = window.innerWidth <= 480;
+            const isTablet = window.innerWidth <= 768 && window.innerWidth > 480;
+            const isLowPerformance = window.devicePixelRatio <= 1.5;
+            
+            // ปรับจำนวนดาวตามอุปกรณ์
+            let numStars = 100;
+            if (isMobile) {
+                numStars = isLowPerformance ? 30 : 50;
+            } else if (isTablet) {
+                numStars = 70;
+            }
             
             // สร้างดาวปกติ
             for (let i = 0; i < numStars; i++) {
@@ -1735,21 +1678,27 @@
                 starsContainer.appendChild(star);
             }
 
-            // สร้างดาวตก
+            // สร้างดาวตก (ไม่สร้างบน mobile)
             function createShootingStar() {
+                if (isMobile) return; // ไม่สร้างดาวตกบน mobile
+                
                 const shootingStar = document.createElement('div');
                 shootingStar.className = 'shooting-star';
                 shootingStar.style.left = Math.random() * 50 + '%';
                 shootingStar.style.top = Math.random() * 50 + '%';
                 shootingStar.style.animationDelay = Math.random() * 2 + 's';
                 
-                // เพิ่ม trail effect
-                shootingStar.style.boxShadow = `
-                    0 0 6px #fff,
-                    0 0 12px #4fc3f7,
-                    0 0 18px #4fc3f7,
-                    0 0 24px #4fc3f7
-                `;
+                // เพิ่ม trail effect (ลดลงบน tablet)
+                if (!isTablet) {
+                    shootingStar.style.boxShadow = `
+                        0 0 6px #fff,
+                        0 0 12px #4fc3f7,
+                        0 0 18px #4fc3f7,
+                        0 0 24px #4fc3f7
+                    `;
+                } else {
+                    shootingStar.style.boxShadow = `0 0 4px #fff, 0 0 8px #4fc3f7`;
+                }
                 
                 starsContainer.appendChild(shootingStar);
                 
@@ -1769,8 +1718,11 @@
                 constellation.style.top = Math.random() * 80 + 10 + '%';
                 constellation.style.animationDelay = Math.random() * 4 + 's';
                 
+                // ลดจำนวนดาวในกลุ่มบน mobile
+                const constellationStars = isMobile ? 3 : 5;
+                
                 // สร้างดาวในกลุ่ม
-                for (let i = 0; i < 5; i++) {
+                for (let i = 0; i < constellationStars; i++) {
                     const constellationStar = document.createElement('div');
                     constellationStar.style.position = 'absolute';
                     constellationStar.style.width = '2px';
@@ -1779,22 +1731,30 @@
                     constellationStar.style.borderRadius = '50%';
                     constellationStar.style.left = (i * 15) + 'px';
                     constellationStar.style.top = Math.sin(i) * 10 + 'px';
-                    constellationStar.style.boxShadow = '0 0 4px #e1bee7';
+                    
+                    // ลด glow effect บน mobile
+                    if (!isMobile) {
+                        constellationStar.style.boxShadow = '0 0 4px #e1bee7';
+                    }
                     constellation.appendChild(constellationStar);
                 }
                 
                 starsContainer.appendChild(constellation);
             }
 
-            // สร้างดาวตกทุก 5-10 วินาที
-            setInterval(() => {
-                if (Math.random() < 0.7) {
-                    createShootingStar();
-                }
-            }, Math.random() * 5000 + 5000);
+            // สร้างดาวตกทุก 5-10 วินาที (ไม่ทำงานบน mobile)
+            if (!isMobile) {
+                const shootingStarInterval = isTablet ? 15000 : 7000; // ลดความถี่บน tablet
+                setInterval(() => {
+                    if (Math.random() < (isTablet ? 0.3 : 0.7)) {
+                        createShootingStar();
+                    }
+                }, Math.random() * shootingStarInterval + shootingStarInterval);
+            }
 
-            // สร้างกลุ่มดาว
-            for (let i = 0; i < 3; i++) {
+            // สร้างกลุ่มดาว (ลดจำนวนบน mobile)
+            const numConstellations = isMobile ? 1 : (isTablet ? 2 : 3);
+            for (let i = 0; i < numConstellations; i++) {
                 setTimeout(() => {
                     createConstellation();
                 }, i * 2000);
@@ -2095,7 +2055,7 @@ ${document.getElementById('updateTime').textContent}`;
                 alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
             }
         }
-
+        
         // ฟังก์ชันแสดงผลลัพธ์
         function displayResult(result, dreamText = '') {
             // แสดงผลลัพธ์พื้นฐาน
