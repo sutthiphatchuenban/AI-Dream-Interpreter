@@ -11,14 +11,10 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/dream-interpreter.html"
-    },
-    {
-      "src": "/favicon.svg",
-      "dest": "/favicon.svg"
+      "source": "/",
+      "destination": "/dream-interpreter.html"
     }
   ],
   "headers": [
